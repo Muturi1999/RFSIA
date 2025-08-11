@@ -1,115 +1,99 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Layout from "@/components/Layout";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              pages/index.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <Layout>
+      {/* HERO */}
+      <section
+        className="relative"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1600&auto=format&fit=crop')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-black/60"></div>
+        <div className="relative mx-auto max-w-7xl px-4 py-24 text-white">
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+            Assess Digital Readiness with <span className="text-purple-300">RAFSIA</span>
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-gray-200">
+            Measure Technical, Economic, Socio‑Cultural, Environmental, and Policy readiness for IHLs and ISPs.
+            Get instant scores, radar charts, and exportable reports.
+          </p>
+          <div className="mt-8 flex gap-3">
+            <Link href="/survey/start" className="btn btn-primary">Start Survey</Link>
+            <Link href="/admin/login" className="btn btn-outline bg-white/10 text-white border-white">Admin Login</Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="mx-auto max-w-7xl px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 className="text-3xl font-bold">About RAFSIA</h2>
+          <p className="mt-4 text-gray-600">
+            RAFSIA evaluates readiness along five dimensions using Likert‑scale questionnaires and qualitative interviews.
+            Our scoring engine converts responses to 0–100 per dimension, generates an overall level, and offers
+            actionable recommendations.
+          </p>
+          <ul className="mt-4 text-gray-700 list-disc list-inside space-y-1">
+            <li>Dual forms: IHLs and ISPs</li>
+            <li>Real‑time radar visualization</li>
+            <li>Admin interview capture & exports</li>
+          </ul>
+          <div className="mt-6">
+            <a href="#services" className="btn btn-primary">Explore Services</a>
+          </div>
+        </div>
+        <div className="order-first md:order-last">
+          <img
+            className="w-full rounded-2xl shadow-lg"
+            src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop"
+            alt="About RAFSIA"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="services" className="mx-auto max-w-7xl px-4 pb-16">
+        <h2 className="text-3xl font-bold">Services</h2>
+        <p className="mt-2 text-gray-600">Choose a module to get started.</p>
+
+        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="card p-6">
+            <div className="w-11 h-11 grid place-items-center rounded-lg bg-purple-100 text-purple-700">
+              {/* survey icon */}
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3h14a2 2 0 0 1 2 2v3H3V5a2 2 0 0 1 2-2Zm-2 8h20v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-6Zm5 2v2h8v-2H8Z"/></svg>
+            </div>
+            <h3 className="mt-4 font-semibold text-lg">Readiness Survey</h3>
+            <p className="mt-2 text-sm text-gray-600">Complete the RAFSIA Likert questionnaire for IHLs or ISPs and get instant scoring.</p>
+            <Link href="/survey/start" className="mt-4 inline-block text-purple-700 font-medium">Open Survey →</Link>
+          </div>
+
+          <div className="card p-6">
+            <div className="w-11 h-11 grid place-items-center rounded-lg bg-purple-100 text-purple-700">
+              {/* interview icon */}
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M2 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H9l-4 4v-4H5a3 3 0 0 1-3-3V5Zm17 8h2a3 3 0 0 1 3 3v4l-4-4h-1a3 3 0 0 1-3-3v-1h3Z"/></svg>
+            </div>
+            <h3 className="mt-4 font-semibold text-lg">Interviews (Admin)</h3>
+            <p className="mt-2 text-sm text-gray-600">Capture qualitative notes tagged to RAFSIA dimensions from institutions and providers.</p>
+            <Link href="/admin/login" className="mt-4 inline-block text-purple-700 font-medium">Go to Admin →</Link>
+          </div>
+
+          <div className="card p-6">
+            <div className="w-11 h-11 grid place-items-center rounded-lg bg-purple-100 text-purple-700">
+              {/* report icon */}
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm8 1v5h5"/></svg>
+            </div>
+            <h3 className="mt-4 font-semibold text-lg">Reports & Exports</h3>
+            <p className="mt-2 text-sm text-gray-600">Download CSV/PDF readiness reports; compare across institutions.</p>
+            <Link href="/admin/submissions" className="mt-4 inline-block text-purple-700 font-medium">Open Dashboard →</Link>
+          </div>
+        </div>
+      </section>
+    </Layout>
   );
 }
